@@ -138,6 +138,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ActionNode.cpp" />
+    <ClCompile Include="GoalNode.cpp" />
+    <ClCompile Include="GoapAction.cpp" />
+    <ClCompile Include="GoapAgent.cpp" />
+    <ClCompile Include="GoapGoal.cpp" />
+    <ClCompile Include="GoapPlanner.cpp" />
+    <ClCompile Include="Node.cpp" />
+    <ClCompile Include="Tree.cpp" />
+    <ClCompile Include="WorldState.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ActionNode.h" />
+    <ClInclude Include="GoalNode.h" />
+    <ClInclude Include="GoapAction.h" />
+    <ClInclude Include="GoapAgent.h" />
+    <ClInclude Include="GoapGoal.h" />
+    <ClInclude Include="GoapPlanner.h" />
+    <ClInclude Include="Node.h" />
+    <ClInclude Include="Tree.h" />
+    <ClInclude Include="WorldState.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
