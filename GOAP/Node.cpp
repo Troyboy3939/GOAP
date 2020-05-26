@@ -5,9 +5,9 @@ Node* Node::GetChild(int nIndex)
 	return m_aChildren[nIndex];
 }
 
-std::vector<Node*> Node::GetChildren()
+std::vector<Node*>* Node::GetChildren()
 {
-	return m_aChildren;
+	return &m_aChildren;
 }
 
 Node::Type Node::GetType()
@@ -18,4 +18,9 @@ Node::Type Node::GetType()
 void Node::AddChild(Node* pChild)
 {
 	m_aChildren.push_back((Node*)pChild);
+}
+
+Node* Node::GetParent()
+{
+	return m_pParent;
 }

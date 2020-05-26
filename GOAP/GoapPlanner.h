@@ -10,8 +10,12 @@ class GoapPlanner
 {
 public:
 	GoapPlanner(GoapAgent* pAgent);
+	void Update();
 private:
+
+	void CheckGoals();
 	GoapAgent* m_pAgent;
+	GoapGoal* m_pCurrentGoal;
 	Tree* m_pTree;
 };
 

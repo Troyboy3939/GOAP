@@ -3,26 +3,59 @@
 #include "GoalNode.h"
 #include "GoapGoal.h"
 #include "GoapAction.h"
+#include <iostream>
 
 
+Tree::Tree(GoapGoal* pGoal)
+{
+	m_pRootNode = new GoalNode(pGoal);
+}
+
+Tree::~Tree()
+{
+	for (int i = m_aDeleted.size() - 1; i > 0; i--)
+	{
+		delete m_aDeleted[i];
+		m_aDeleted[i] = nullptr;
+	}
+
+	m_aDeleted.clear();
+}
 
 void Tree::AddNode(GoapAction* pAction)
 {
-	bool bDone = false;
+	Node* pTarget = Find(pAction,m_pRootNode);
 
-	Node* pTarget  = m_pRootNode;
-	//Do not forget to do a comparison operator overload
-	//If the action meets the goals desired world state
-	if (m_pRootNode->GetGoal()->GetDesiredWorldState() == pAction->GetSatisfiesWorldState())
+	if (pTarget)
 	{
-		//Add the child to that node
-		m_pRootNode->AddChild(new ActionNode(pAction));
+		pTarget->AddChild(new ActionNode(pAction,pTarget));
 	}
-	else //Else if it isn't, while loop to find the correct parent node
+	else
 	{
-		
+		std::cout << "Action cannot be added to tree" << std::endl;
 	}
 	
+}
+
+void Tree::RemoveNode(GoapAction* pAction)
+{
+	Node* pTarget = Find(pAction,(Node*)m_pRootNode);
+
+	DeleteBranch(pTarget);
+}
+
+void Tree::AddNewGoal(GoapGoal* pGoal)
+{
+	DeleteBranch(m_pRootNode);
+
+	m_pRootNode = new GoalNode(pGoal);
+}
+
+
+
+GoalNode* Tree::GetGoalNode()
+{
+	return m_pRootNode;
 }
 
 Node* Tree::Find(GoapAction* pAction, Node* pStart)
@@ -60,7 +93,7 @@ Node* Tree::Find(GoapAction* pAction, Node* pStart)
 	//If pStart is not the node you are looking for
 
 	//For every child
-	for (int i = 0; i < pStart->GetChildren().size(); i++)
+	for (int i = 0; i < pStart->GetChildren()->size(); i++)
 	{
 
 		Node* pTarget = Find(pAction,pStart->GetChild(i));
@@ -75,38 +108,25 @@ Node* Tree::Find(GoapAction* pAction, Node* pStart)
 	return nullptr;
 }
 
+void Tree::DeleteBranch(Node* pTarget)
+{
+	//Delete Yourself
+	m_aDeleted.push_back(pTarget);
 
 
-
-/*
-
-	//If you are not done
-	while (!bDone)
+	//For every child you have
+	for (int i = 0; i < pTarget->GetChildren()->size();i++)
 	{
-		std::vector<Node*> aTargetChildren = pTarget->GetChildren();
-		//For every child the target has
-		for (int i = 0; i < aTargetChildren.size(); i++)
+		//If they are not null
+		if (pTarget->GetChild(i))
 		{
-			ActionNode* pChild = (ActionNode*)aTargetChildren[i];
-			for (int j = 0; j < pChild->GetAction()->GetRequiredWorldState().size(); j++)
-			{
-				//if the world state that the new node satisfies, satisfies the world state required
-				if (pChild->GetAction()->GetRequiredWorldState()[j] == pAction->GetSatisfiesWorldState())
-				{
-					//Then it is the appropiate parent
-					pChild->AddChild(new ActionNode(pAction));
-					bDone = true;
-					break;
-				}
-			}
-
-			if (bDone)
-			{
-				break;
-			}
-
+			//Delete them
+			DeleteBranch(pTarget->GetChild(i));
 		}
+		
 	}
 
+	pTarget->GetChildren()->clear();
+}
 
-*/
+
