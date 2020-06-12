@@ -1,6 +1,6 @@
 #pragma once
 #include "Node.h"
-
+#include "WorldState.h"
 class GoapAction;
 
 class ActionNode :
@@ -9,6 +9,13 @@ class ActionNode :
 public:
 	ActionNode(GoapAction* pAction, Node* pParent);
 	GoapAction* GetAction();
+
+	WorldState* GetSatisfiesWorldState();
+
+	std::vector<WorldState*> GetRequiredState();
+	
+	int GetCost();
+	bool operator==(Node* pRHS);
 private:
 	//The action that this node represents
 	GoapAction* m_pAction;

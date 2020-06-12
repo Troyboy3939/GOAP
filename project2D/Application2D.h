@@ -3,6 +3,8 @@
 #include "Application.h"
 #include "Renderer2D.h"
 
+
+
 class Application2D : public aie::Application {
 public:
 
@@ -19,6 +21,12 @@ protected:
 
 	aie::Renderer2D*	m_2dRenderer;
 
+
+
+	
+
+
+	aie::Font* m_pFont;
 
 	float m_timer;
 };

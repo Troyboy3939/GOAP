@@ -1,6 +1,6 @@
 #pragma once
 #include <String>
-
+class GoapAgent;
 class WorldState
 {
 public:
@@ -12,8 +12,8 @@ public:
 	void SetValue(bool bValue);
 	void SetKey(std::string strKey);
 
-	//Comparing world states
-	bool operator==(WorldState otherState);
+	//Returns whether the required world state is satisfied or not
+	virtual bool IsSatisfied(GoapAgent* pAgent) = 0;
 
 private:
 	//Key, describes the world state

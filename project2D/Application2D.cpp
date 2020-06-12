@@ -18,7 +18,9 @@ bool Application2D::startup()
 	
 	m_2dRenderer = new aie::Renderer2D();
 
-	
+
+
+	m_pFont = new aie::Font("./font/consolas.ttf", 12);
 	m_timer = 0;
 
 	return true;
@@ -27,12 +29,14 @@ bool Application2D::startup()
 void Application2D::shutdown()
 {
 	delete m_2dRenderer;
+
+	
 }
 
-void Application2D::update(float deltaTime) 
+void Application2D::update(float fDeltaTime) 
 {
 
-	m_timer += deltaTime;
+	m_timer += fDeltaTime;
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
@@ -43,22 +47,24 @@ void Application2D::update(float deltaTime)
 	m_2dRenderer->getCameraPos(camPosX, camPosY);
 
 	if (input->isKeyDown(aie::INPUT_KEY_UP))
-		camPosY += 500.0f * deltaTime;
+		camPosY += 500.0f * fDeltaTime;
 
 	if (input->isKeyDown(aie::INPUT_KEY_DOWN))
-		camPosY -= 500.0f * deltaTime;
+		camPosY -= 500.0f * fDeltaTime;
 
 	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
-		camPosX -= 500.0f * deltaTime;
+		camPosX -= 500.0f * fDeltaTime;
 
 	if (input->isKeyDown(aie::INPUT_KEY_RIGHT))
-		camPosX += 500.0f * deltaTime;
+		camPosX += 500.0f * fDeltaTime;
 
 	m_2dRenderer->setCameraPos(camPosX, camPosY);
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
+
+
 }
 
 void Application2D::draw()
@@ -70,6 +76,17 @@ void Application2D::draw()
 
 	// begin drawing sprites
 	m_2dRenderer->begin();
+
+
+	float fX, fY;
+
+	m_2dRenderer->getCameraPos(fX, fY);
+
+	char fps[32];
+	sprintf_s(fps, 32, "FPS: %i", getFPS());
+	m_2dRenderer->drawText(m_pFont, fps, fX, 720 - 32 + fY);
+	m_2dRenderer->drawText(m_pFont, "Press ESC to quit!", fX, 720 - 64 + fY);
+
 
 
 	// done drawing sprites

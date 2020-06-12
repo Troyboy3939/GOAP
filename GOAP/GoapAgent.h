@@ -8,12 +8,18 @@
 class GoapAgent
 {
 public:
-	GoapAgent(std::vector<GoapAction*> aAvailableActions);
+	GoapAgent();
 
 	std::vector<GoapAction*> GetAvailableActions();
 	std::vector<GoapGoal*> GetGoals();
 
+	void SetGoals(std::vector<GoapGoal*> aGoals);
+
 	void SetCurrentActions(std::queue<GoapAction*> aActions);
+
+	void SetAvailableActions(std::vector<GoapAction*> aActions);
+
+	void Update();
 
 private:
 	//Actions the agent should be doing

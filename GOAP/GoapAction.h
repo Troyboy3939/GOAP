@@ -10,7 +10,7 @@ public:
 
 	//This function is what is called to check if this action is a valid action, check whether it is possible to do
 	//For example, to kill player, the agent needs to be able to see the player
-	virtual bool IsValid() = 0;
+	virtual bool IsValid(GoapAgent* pAgent) = 0;
 
 	float GetCost();
 	void SetCost(float fCost);

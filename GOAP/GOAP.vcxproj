@@ -71,6 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)dependencies\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -80,6 +81,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)dependencies\$(ProjectName)\$(Platform)\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -139,22 +141,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ActionNode.cpp" />
+    <ClCompile Include="BuyTool.cpp" />
     <ClCompile Include="GoalNode.cpp" />
     <ClCompile Include="GoapAction.cpp" />
     <ClCompile Include="GoapAgent.cpp" />
     <ClCompile Include="GoapGoal.cpp" />
     <ClCompile Include="GoapPlanner.cpp" />
+    <ClCompile Include="Heap.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Tree.cpp" />
     <ClCompile Include="WorldState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionNode.h" />
+    <ClInclude Include="BuyTool.h" />
     <ClInclude Include="GoalNode.h" />
     <ClInclude Include="GoapAction.h" />
     <ClInclude Include="GoapAgent.h" />
     <ClInclude Include="GoapGoal.h" />
     <ClInclude Include="GoapPlanner.h" />
+    <ClInclude Include="Heap.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Tree.h" />
     <ClInclude Include="WorldState.h" />

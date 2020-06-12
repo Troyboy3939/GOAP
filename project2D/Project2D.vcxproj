@@ -120,14 +120,14 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;$(SolutionDir)GOAP;$(ProjectDir)MathsHeaders;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>bootstrap.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Bootstrap\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>bootstrap.lib;GOAP.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\GOAP\$(Platform)\$(Configuration)\;$(SolutionDir)dependencies\Bootstrap\$(Platform)\$(Configuration)\;$(SolutionDir)dependencies\Maths\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -159,23 +159,56 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)bootstrap;$(SolutionDir)dependencies/imgui;$(SolutionDir)dependencies/glm;$(SolutionDir)GOAP;$(ProjectDir)MathsHeaders;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>bootstrap.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\Bootstrap\$(Platform)\$(Configuration)\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>bootstrap.lib;GOAP.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)dependencies\GOAP\$(Platform)\$(Configuration)\;$(SolutionDir)dependencies\Bootstrap\$(Platform)\$(Configuration)\;$(SolutionDir)dependencies\Maths\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Anvil.cpp" />
     <ClCompile Include="Application2D.cpp" />
+    <ClCompile Include="AtBlacksmith.cpp" />
+    <ClCompile Include="Axe.cpp" />
+    <ClCompile Include="Blacksmith.cpp" />
+    <ClCompile Include="Furnace.cpp" />
+    <ClCompile Include="GoapManager.cpp" />
+    <ClCompile Include="GotoBlacksmith.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Maths\Matrix3.cpp" />
+    <ClCompile Include="Maths\Matrix4.cpp" />
+    <ClCompile Include="Maths\Vector2.cpp" />
+    <ClCompile Include="Maths\Vector3.cpp" />
+    <ClCompile Include="Maths\Vector4.cpp" />
+    <ClCompile Include="Mine.cpp" />
+    <ClCompile Include="Miner.cpp" />
+    <ClCompile Include="OakTree.cpp" />
+    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="Pickaxe.cpp" />
+    <ClCompile Include="Tool.cpp" />
+    <ClCompile Include="Woodcutter.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Anvil.h" />
     <ClInclude Include="Application2D.h" />
+    <ClInclude Include="AtBlacksmith.h" />
+    <ClInclude Include="Axe.h" />
+    <ClInclude Include="Blacksmith.h" />
+    <ClInclude Include="Furnace.h" />
+    <ClInclude Include="GoapManager.h" />
+    <ClInclude Include="GotoBlacksmith.h" />
+    <ClInclude Include="Mine.h" />
+    <ClInclude Include="Miner.h" />
+    <ClInclude Include="OakTree.h" />
+    <ClInclude Include="Person.h" />
+    <ClInclude Include="Pickaxe.h" />
+    <ClInclude Include="Tool.h" />
+    <ClInclude Include="Woodcutter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

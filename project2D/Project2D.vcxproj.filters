@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Maths">
+      <UniqueIdentifier>{acabd795-cd73-43d2-b8ca-313e904af65d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Application2D.cpp">
@@ -21,9 +24,108 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Woodcutter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Blacksmith.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Miner.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OakTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Anvil.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Furnace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Person.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Axe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pickaxe.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\Matrix3.cpp">
+      <Filter>Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\Matrix4.cpp">
+      <Filter>Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\Vector2.cpp">
+      <Filter>Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\Vector3.cpp">
+      <Filter>Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="Maths\Vector4.cpp">
+      <Filter>Maths</Filter>
+    </ClCompile>
+    <ClCompile Include="GotoBlacksmith.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AtBlacksmith.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GoapManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Woodcutter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Blacksmith.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Miner.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OakTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Mine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Anvil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Furnace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pickaxe.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GotoBlacksmith.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AtBlacksmith.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GoapManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
