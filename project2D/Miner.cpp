@@ -1,6 +1,6 @@
 #include "Miner.h"
 
-Miner::Miner(Vector2 v2Position, Vector3 v3Colour) : Person(v2Position,v3Colour)
+Miner::Miner(Vector2 v2Position, Vector3 v3Colour) : Person(Person::TYPE::MINER,v2Position,v3Colour)
 {
 	
 }

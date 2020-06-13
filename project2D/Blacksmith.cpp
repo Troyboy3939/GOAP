@@ -1,6 +1,6 @@
 #include "Blacksmith.h"
 
-Blacksmith::Blacksmith( Vector2 v2Position, Vector3 v3Colour) : Person(v2Position,v3Colour)
+Blacksmith::Blacksmith( Vector2 v2Position, Vector3 v3Colour) : Person(Person::TYPE::BLACKSMITH, v2Position,v3Colour)
 {
 }
 

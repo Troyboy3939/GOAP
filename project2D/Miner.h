@@ -7,6 +7,9 @@ public:
 	void Update(float fDeltaTime);
 
 	void Draw(aie::Renderer2D* pRenderer);
+
+	float GetToolDurability();
+	bool HasTool();
 private:
 };
 

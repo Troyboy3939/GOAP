@@ -1,13 +1,13 @@
 #include "GotoBlacksmith.h"
 
-GotoBlacksmith::GotoBlacksmith(Blacksmith* pBlacksmith, WorldState* pSatisfies, std::vector<WorldState*> aRequired) : GoapAction(pSatisfies,aRequired)
+GotoBlacksmith::GotoBlacksmith(Shop* pBlacksmithShop, WorldState* pSatisfies, std::vector<WorldState*> aRequired) : GoapAction(pSatisfies,aRequired)
 {
-	m_pBlacksmith = pBlacksmith;
+	m_pShop = pBlacksmithShop;
 }
 
 bool GotoBlacksmith::IsValid(GoapAgent* pAgent)
 {
 
 	//if both pBlacksmith and pTarget are not null, then it is a valid action
-	return (m_pBlacksmith && pAgent);
+	return (m_pShop && pAgent);
 }

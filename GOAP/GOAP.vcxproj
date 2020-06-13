@@ -141,7 +141,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ActionNode.cpp" />
-    <ClCompile Include="BuyTool.cpp" />
     <ClCompile Include="GoalNode.cpp" />
     <ClCompile Include="GoapAction.cpp" />
     <ClCompile Include="GoapAgent.cpp" />
@@ -154,7 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ActionNode.h" />
-    <ClInclude Include="BuyTool.h" />
     <ClInclude Include="GoalNode.h" />
     <ClInclude Include="GoapAction.h" />
     <ClInclude Include="GoapAgent.h" />

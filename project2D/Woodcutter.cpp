@@ -1,6 +1,6 @@
 #include "Woodcutter.h"
 
-Woodcutter::Woodcutter( Vector3 v3Colour, Vector2 v2Position) : Person(v2Position,v3Colour)
+Woodcutter::Woodcutter( Vector3 v3Colour, Vector2 v2Position) : Person(Person::TYPE::WOODCUTTER,v2Position,v3Colour)
 {
 }
 

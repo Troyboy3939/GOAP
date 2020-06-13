@@ -1,16 +1,16 @@
 #pragma once
 #include "GoapAction.h"
 
-class Blacksmith;
+class Shop;
 class Worldstate;
 class Person;
 class GotoBlacksmith : public GoapAction
 {
 public:
-	GotoBlacksmith(Blacksmith* pBlacksmith ,WorldState* pSatisfies, std::vector<WorldState*> aRequired);
+	GotoBlacksmith(Shop* pBlacksmithShop ,WorldState* pSatisfies, std::vector<WorldState*> aRequired);
 
 	bool IsValid(GoapAgent* pAgent);
 private:
-	Blacksmith* m_pBlacksmith;
+	Shop* m_pShop;
 };
 

@@ -9,6 +9,9 @@ public:
 	void Update(float fDeltaTime);
 
 	void Draw(aie::Renderer2D* pRenderer);
+
+	bool HasResources();
+	bool HasTool();
 private:
 };
 
