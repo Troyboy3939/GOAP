@@ -1,12 +1,14 @@
 #pragma once
-#include "GoapAction.h"
+#include <GoapGoal.h>
 class BuyTool :
-	public GoapAction
+	public GoapGoal
 {
 public:
-	BuyTool(WorldState* pSatisfies, std::vector<WorldState*> aRequired);
+	BuyTool(float fPriority, WorldState* pDesiredWorldState);
 
 	bool IsValid(GoapAgent* pAgent);
 private:
+
+
 };
 

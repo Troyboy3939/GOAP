@@ -33,10 +33,16 @@ void Heap::Add(Node* pNode)
 
 Node* Heap::GetTop()
 {
+	if (m_aNodes.size() == 0)
+	{
+		return nullptr;
+	}
+
+
 	//store Top Node
 	Node* pNode = m_aNodes[0];
 
-	//Get the last node
+	//Get the last node index
 	int nLast = (int)(m_aNodes.size() - 1);
 
 	//set the new top node to the last node

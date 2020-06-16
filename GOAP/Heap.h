@@ -10,6 +10,7 @@ public:
 	~Heap();
 
 	void Add(Node* pNode);
+	//Returns and removes the node from the heap
 	Node* GetTop();
 	int Size();
 	void Clear();

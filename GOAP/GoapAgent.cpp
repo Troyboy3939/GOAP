@@ -1,4 +1,6 @@
 #include "GoapAgent.h"
+#include <iostream>
+
 
 GoapAgent::GoapAgent()
 {
@@ -20,7 +22,7 @@ void GoapAgent::SetGoals(std::vector<GoapGoal*> aGoals)
 	m_aGoals = aGoals;
 }
 
-void GoapAgent::SetCurrentActions(std::queue<GoapAction*> aActions)
+void GoapAgent::SetCurrentActions(std::vector<GoapAction*> aActions)
 {
 	m_aCurrentActions = aActions;
 }

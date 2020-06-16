@@ -4,23 +4,29 @@
 #include "Blacksmith.h"
 #include "WorldState.h"
 #include "Renderer2D.h"
-#include "Shop.h"
 
 //Worldstates
 #include "AtBlacksmith.h"
 #include "GotTool.h"
-#include "HasResources.h"
+#include "HasLogs.h"
+#include "HasOre.h"
 #include "Working.h"
 //Actions
 #include "GotoBlacksmith.h"
-#include "BuyTool.h"
-#include "BuyResources.h"
 #include "MakeTool.h"
 #include "CollectResource.h"
+#include "BuyLogs.h"
+#include "BuyOre.h"
+
+//Goals
+#include "Work.h"
+#include "BuyTool.h"
+
+
 class GoapManager
 {
 public:
-	GoapManager();
+	GoapManager(Mine* pMine, LoggingSite* pLogSite, SmithingSite* pSmithSite);
 	~GoapManager();
 
 	void Update(float fDeltaTime);
@@ -32,23 +38,27 @@ private:
 	Blacksmith* m_pBlacksmith;
 	Woodcutter* m_pWoodcutter;
 
-	//Stations
-	Shop* m_pBlacksmithShop;
 
-	//worldstates
+
+	//Worldstates
 	AtBlacksmith* m_pAtBlacksmith;
 	GotTool* m_pNoTool;
 	GotTool* m_pGotTool;
-	HasResources* m_pGotResources;
-	HasResources* m_pNoResources;
+	HasLogs* m_pGotLogs;
+	HasLogs* m_pNoLogs;
+	HasOre* m_pGotOre;
+	HasOre* m_pNoOre;
 	Working* m_pWorking;
-	Working* m_pNotWorking;
 
 	//Actions
 	GotoBlacksmith* m_pGotoBlacksmith;
-	BuyTool* m_pBuyTool;
-	BuyResources* m_pBuyResources;
 	MakeTool* m_pMakeTool;
 	CollectResource* m_pCollectResource;
+	BuyLogs* m_pBuyLogs;
+	BuyOre* m_pBuyOre;
+
+	//Goals
+	Work* m_pWorkGoal;
+	BuyTool* m_pBuyToolGoal;
 };
 

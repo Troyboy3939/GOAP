@@ -8,16 +8,21 @@ class ActionNode :
 {
 public:
 	ActionNode(GoapAction* pAction, Node* pParent);
+
 	GoapAction* GetAction();
 
 	WorldState* GetSatisfiesWorldState();
 
 	std::vector<WorldState*> GetRequiredState();
+
+	bool IsSatisfied(GoapAgent* pAgent);
 	
-	int GetCost();
+	float GetCost(GoapAgent* pAgent);
 	bool operator==(Node* pRHS);
+
 private:
 	//The action that this node represents
 	GoapAction* m_pAction;
+	
 };
 

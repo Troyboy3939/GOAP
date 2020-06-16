@@ -12,12 +12,12 @@ public:
 	//For example, to kill player, the agent needs to be able to see the player
 	virtual bool IsValid(GoapAgent* pAgent) = 0;
 
-	float GetCost();
+	virtual float GetCost(GoapAgent* pAgent) = 0;
 	void SetCost(float fCost);
 
 	WorldState* GetSatisfiesWorldState();
 	std::vector<WorldState*> GetRequiredWorldState();
-private:
+protected:
 	//What is the cost of this action?
 	float m_fCost;
 

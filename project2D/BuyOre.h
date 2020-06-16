@@ -1,16 +1,16 @@
 #pragma once
 #include <GoapAction.h>
-
-class CollectResource :
+#include "Mine.h"
+class BuyOre :
 	public GoapAction
 {
 public:
-	CollectResource(WorldState* pSatisifies, std::vector<WorldState*> aRequires);
-
+	BuyOre(Mine* pMine, WorldState* pSatisfied, std::vector<WorldState*>aRequired);
 
 	bool IsValid(GoapAgent* pAgent);
 
 	float GetCost(GoapAgent* pAgent);
 private:
+	Mine* m_pMine;
 };
 

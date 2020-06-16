@@ -6,6 +6,11 @@ Node::Node()
 {
 	m_nID = m_nNumberOfNodes;
 	m_nNumberOfNodes++;
+	m_pParent = nullptr;
+	m_nHScore = 0;
+	m_nFScore = 0;
+	m_nGScore = 0;
+	m_eType = Type::NONE;
 }
 
 Node* Node::GetChild(int nIndex)
@@ -33,32 +38,32 @@ Node* Node::GetParent()
 	return m_pParent;
 }
 
-int Node::GetFScore()
+float Node::GetFScore()
 {
 	return m_nFScore;
 }
 
-int Node::GetHScore()
+float Node::GetHScore()
 {
 	return m_nHScore;
 }
 
-int Node::GetGScore()
+float Node::GetGScore()
 {
 	return m_nGScore;
 }
 
-void Node::SetFScore(int nFScore)
+void Node::SetFScore(float nFScore)
 {
 	m_nFScore = nFScore;
 }
 
-void Node::SetHScore(int nHScore)
+void Node::SetHScore(float nHScore)
 {
 	m_nHScore = nHScore;
 }
 
-void Node::SetGScore(int nGScore)
+void Node::SetGScore(float nGScore)
 {
 	m_nGScore = nGScore;
 }

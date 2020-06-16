@@ -4,12 +4,10 @@ GoapAction::GoapAction(WorldState* pSatisfies, std::vector<WorldState*> aRequire
 {
 	m_aRequiredWorldState = aRequired;
 	m_pSatisfiesWorldState = pSatisfies;
+	
 }
 
-float GoapAction::GetCost()
-{
-	return m_fCost;
-}
+
 
 void GoapAction::SetCost(float fCost)
 {

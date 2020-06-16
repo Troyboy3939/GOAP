@@ -45,25 +45,10 @@
     <ClCompile Include="Tool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Axe.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pickaxe.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Maths\Matrix3.cpp">
-      <Filter>Maths</Filter>
-    </ClCompile>
-    <ClCompile Include="Maths\Matrix4.cpp">
-      <Filter>Maths</Filter>
-    </ClCompile>
     <ClCompile Include="Maths\Vector2.cpp">
       <Filter>Maths</Filter>
     </ClCompile>
     <ClCompile Include="Maths\Vector3.cpp">
-      <Filter>Maths</Filter>
-    </ClCompile>
-    <ClCompile Include="Maths\Vector4.cpp">
       <Filter>Maths</Filter>
     </ClCompile>
     <ClCompile Include="GotoBlacksmith.cpp">
@@ -75,16 +60,7 @@
     <ClCompile Include="GoapManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BuyTool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GotTool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BuyResources.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HasResources.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MakeTool.cpp">
@@ -93,10 +69,31 @@
     <ClCompile Include="CollectResource.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Shop.cpp">
+    <ClCompile Include="Working.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Working.cpp">
+    <ClCompile Include="Work.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyTool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LoggingSite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SmithingSite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyLogs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyOre.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HasLogs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HasOre.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,12 +122,6 @@
     <ClInclude Include="Tool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Axe.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Pickaxe.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GotoBlacksmith.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -140,16 +131,7 @@
     <ClInclude Include="GoapManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BuyTool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GotTool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BuyResources.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HasResources.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MakeTool.h">
@@ -158,13 +140,34 @@
     <ClInclude Include="CollectResource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Shop.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Working.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Work.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyTool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoggingSite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SmithingSite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyLogs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyOre.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HasLogs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HasOre.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

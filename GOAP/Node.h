@@ -10,7 +10,8 @@ public:
 	enum class Type
 	{
 		GOAL,
-		ACTION
+		ACTION,
+		NONE
 	};
 	Node* GetChild(int nIndex);
 	std::vector<Node*>* GetChildren();
@@ -19,13 +20,13 @@ public:
 
 	Node* GetParent();
 
-	int GetFScore();
-	int GetHScore();
-	int GetGScore();
+	float GetFScore();
+	float GetHScore();
+	float GetGScore();
 
-	void SetFScore(int nFScore);
-	void SetHScore(int nHScore);
-	void SetGScore(int nGScore);
+	void SetFScore(float nFScore);
+	void SetHScore(float nHScore);
+	void SetGScore(float nGScore);
 
 	bool operator==(Node* pRHS);
 
@@ -42,13 +43,13 @@ protected:
 	Type m_eType;
 
 	//F = G + H
-	int m_nFScore;
+	float m_nFScore;
 
 	//Cost of getting to node
-	int m_nGScore;
+	float m_nGScore;
 
 	//Hueristic
-	int m_nHScore;
+	float m_nHScore;
 
 	int m_nID;
 

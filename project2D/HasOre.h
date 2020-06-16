@@ -1,12 +1,14 @@
 #pragma once
 #include <WorldState.h>
-class HasResources :
+class HasOre :
 	public WorldState
 {
 public:
-	HasResources(std::string strKey, bool bValue);
+	HasOre(std::string strKey, bool bValue);
+
 
 	bool IsSatisfied(GoapAgent* pAgent);
 private:
+
 };
 

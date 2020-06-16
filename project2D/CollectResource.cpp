@@ -9,10 +9,16 @@ bool CollectResource::IsValid(GoapAgent* pAgent)
 
 	Person* pPerson = (Person*)pAgent;
 
+
 	if (pPerson)
 	{
 		//Valid to collect resource if station exists
 		return pPerson->StationExists();
 	}
 	return false;
+}
+
+float CollectResource::GetCost(GoapAgent* pAgent)
+{
+	return 0.0f;
 }

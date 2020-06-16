@@ -23,6 +23,5 @@ private:
 	bool m_bHasPlan;
 
 	bool GetPlan();
-	void GetActions(Node* pNode);
 };
 

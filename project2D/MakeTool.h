@@ -8,6 +8,7 @@ public:
 
 
 	bool IsValid(GoapAgent* pAgent);
+	float GetCost(GoapAgent* pAgent);
 private:
 };
 

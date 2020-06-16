@@ -26,3 +26,9 @@ void WorldState::SetKey(std::string strKey)
 	m_strKey = strKey;
 }
 
+bool WorldState::operator==(WorldState* pOther)
+{
+
+	return (m_bValue == pOther->m_bValue && (strcmp(m_strKey.c_str(),pOther->m_strKey.c_str()) == 0));
+}
+

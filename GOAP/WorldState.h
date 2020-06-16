@@ -15,6 +15,7 @@ public:
 	//Returns whether the required world state is satisfied or not
 	virtual bool IsSatisfied(GoapAgent* pAgent) = 0;
 
+	bool operator==(WorldState* pOther);
 private:
 	//Key, describes the world state
 	std::string m_strKey;

@@ -16,7 +16,7 @@ public:
     };
 
 
-    Person(TYPE eType,Vector2 v2Position = Vector2(0,0), Vector3 v3Colour = Vector3(0.5f,0.5f,0.5f));
+    Person(TYPE eType, Vector3 v3Colour = Vector3(0.5f,0.5f,0.5f));
     virtual void Update(float fDeltaTime);
     virtual void Draw(aie::Renderer2D* pRenderer) = 0;
 
@@ -33,6 +33,9 @@ public:
 
     virtual bool AtStation() = 0;
     virtual bool StationExists() = 0;
+
+    float GetMoney();
+    void SetMoney(float fMoney);
 protected:
 
     Vector2 m_v2Position;
@@ -40,5 +43,6 @@ protected:
     Vector3 m_v3Colour;
     TYPE m_eType;
     bool m_bWorking;
+    float m_fMoney;
 };
 

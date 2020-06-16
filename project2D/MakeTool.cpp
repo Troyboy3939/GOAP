@@ -16,3 +16,8 @@ bool MakeTool::IsValid(GoapAgent* pAgent)
 	}
 	return false;
 }
+
+float MakeTool::GetCost(GoapAgent* pAgent)
+{
+	return 0.0f;
+}

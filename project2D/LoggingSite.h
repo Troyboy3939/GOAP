@@ -1,10 +1,14 @@
 #pragma once
 #include "Renderer2D.h"
 #include "Vector2.h"
-class Mine
+
+class Person;
+
+class LoggingSite
 {
 public:
-	Mine(Vector2 v2Position);
+	LoggingSite(Vector2 v2Position);
+
 	void Update(float fDeltaTime);
 
 	void Draw(aie::Renderer2D* pRenderer);
@@ -12,16 +16,18 @@ public:
 	Vector2 GetPosition();
 	void SetPosition(Vector2 v2Position);
 
-	float GetOreCost();
-	int GetOreCount();
+	//returns true if bought log
+	bool BuyLog(Person* pCustomer);
 
+	float GetLogPrice();
 private:
-	friend class Miner;
 
-	void AddOre();
+	friend class Woodcutter;
+	void AddLog();
+	
 	Vector2 m_v2Position;
-	float m_fOreCost;
-	int m_nOre;
+	int m_nLogs;
+	float m_fLogPrice;
 	float m_fMoneyCollected;
 };
 

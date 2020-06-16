@@ -1,6 +1,12 @@
 #include "GoapPlanner.h"
 #include "GoapAgent.h"
 #include "GoapGoal.h"
+#include "Heap.h"
+#include <iostream>
+
+
+
+
 GoapPlanner::GoapPlanner(GoapAgent* pAgent)
 {
 	m_pAgent = pAgent;
@@ -15,6 +21,8 @@ void GoapPlanner::Update()
 
 	//Check whether a higher priority goal has been added, or if the current goal is invalid
 	CheckGoals();
+
+	
 
 	//If you do not have a plan
 	if (!m_bHasPlan)
@@ -42,31 +50,37 @@ void GoapPlanner::CheckGoals()
 		//If it exists
 		if (aGoals[i])
 		{
-
-			//If tree does not exist, create one with the current goal
-			if (!m_pTree)
+			//and is a valid goal
+			if (aGoals[i]->IsValid(m_pAgent))
 			{
-				m_pTree = new Tree(aGoals[i]);
-				m_pCurrentGoal = aGoals[i];
-				m_bHasPlan = false;
-				continue;
-			}
-
-			//If it is a different goal
-			if (m_pCurrentGoal != aGoals[i])
-			{
-				//and is a valid goal
-				if (aGoals[i]->IsValid(m_pAgent))
+				//If tree does not exist, create one with the current goal
+				if (!m_pTree)
 				{
 
-					//and either the current goal is invalid, or the new goal has a higher priority
-					if (!m_pCurrentGoal->IsValid(m_pAgent) || m_pCurrentGoal->GetPriority() < aGoals[i]->GetPriority())
+					m_pTree = new Tree(aGoals[i]);
+					m_pCurrentGoal = aGoals[i];
+					m_bHasPlan = false;
+					continue;
+
+				}
+
+				//If it is a different goal
+				if (m_pCurrentGoal != aGoals[i])
+				{
+					//and is a valid goal
+					if (aGoals[i]->IsValid(m_pAgent))
 					{
-						m_pTree->AddNewGoal(aGoals[i]);
-						m_bHasPlan = false;
-						return;
+
+						//and either the current goal is invalid, or the new goal has a higher priority
+						if (!m_pCurrentGoal->IsValid(m_pAgent) || m_pCurrentGoal->GetPriority() < aGoals[i]->GetPriority())
+						{
+							m_pTree->AddNewGoal(aGoals[i]);
+							m_bHasPlan = false;
+							return;
+						}
+
 					}
-					
+
 				}
 			}
 		}
@@ -78,105 +92,207 @@ void GoapPlanner::CheckGoals()
 
 bool GoapPlanner::GetPlan()
 {
-	//If you dont have a plan, and the number of nodes is greater than 1, meaning there are action nodes attached
-	if (!m_bHasPlan && m_pTree->GetNumberOfNodes() > 1)
-	{
-		//This will clear the tree, with the only node being on tree the goal node
-		m_pTree->AddNewGoal(m_pCurrentGoal);
-	}
+	//A* algorithm!
+
+
+
+	
+		//This will clears the tree, so that the previous plan does not mesh with the algorithm
+	m_pTree->AddNewGoal(m_pCurrentGoal);
+
 
 	//Get the actions available to the agent
 	m_aAvailableActions = m_pAgent->GetAvailableActions();
 
 
+
 	Node* pTarget = m_pTree->GetGoalNode();
 
 
-
-	//Potentially revamp how GetActions works!
-	//Since adding node to tree automatically finds the spot based on whether is satisfies a requirement
-	//and if the node added doesn't satisfy anything it doesn't get added
-	//Therefore you could potentially try and add everything to it
-	//and maybe it could work
-	//only problem will be the order in which actions are added
-
-	//Setup tree
-	GetActions(pTarget);
-
-	std::queue<GoapAction*> aActions;
+	Heap openList;
+	std::vector<Node*> aClosedList;
 
 
+	GoalNode* pGoal = ((GoalNode*)pTarget);
 
-	if (m_pTree->GetPlan(aActions,this))
+	//Set the G score, the cost of going to this node (nothing since it is the goal node)
+	pGoal->SetGScore(0);
+
+	//calculate the heuristic, or guess
+	pGoal->SetHScore(1);
+
+	//Set the total score of the node
+	pGoal->SetFScore(pGoal->GetGScore() + pGoal->GetHScore());
+
+	//Add goal to closed list
+	aClosedList.push_back(pTarget);
+
+	for (int i = 0; i < m_aAvailableActions.size(); i++)
 	{
-		m_pAgent->SetCurrentActions(aActions);
-		m_bHasPlan = true;
-		return true;
-	}
-
-	m_pAgent->SetCurrentActions(aActions);
-	m_bHasPlan = false;
-		
-	return false;
-}
-
-void GoapPlanner::GetActions(Node* pNode)
-{
-	GoapGoal* pGoal = nullptr;
-	GoapAction* pAction = nullptr;
-
-	switch (pNode->GetType())
-	{
-	case  Node::Type::ACTION:
-		pAction = ((ActionNode*)pNode)->GetAction();
-		break;
-	case  Node::Type::GOAL:
-		pGoal = ((GoalNode*)pNode)->GetGoal();
-		break;
-	}
-
-	//If pGoal is not null, then pNode was the goal node, so use that
-	if (pGoal)
-	{
-		
-		for (int i = 0; i < m_aAvailableActions.size(); i++)
+		if (m_aAvailableActions[i]->IsValid(m_pAgent))
 		{
-			if (m_aAvailableActions[i]->GetSatisfiesWorldState() == pGoal->GetDesiredWorldState())
-			{
 			
-					m_pTree->AddNode(m_aAvailableActions[i]);
-					GetActions(m_pTree->GetLastAdded());
-	
-			}
+				if (m_aAvailableActions[i]->GetSatisfiesWorldState() == pGoal->GetDesiredWorldState())
+				{
+
+
+
+					//Add the node to the tree
+					m_pTree->AddNode(m_aAvailableActions[i], pTarget);
+
+					ActionNode* pAdded = (ActionNode*)m_pTree->GetLastAdded();
+
+					//Set the G score, the cost of going to this node (nothing since it is the goal node)
+					pAdded->SetGScore(pAdded->GetCost(m_pAgent));
+
+					//calculate the heuristic, or guess
+					pAdded->SetHScore((float)((ActionNode*)(m_pTree->GetLastAdded()))->GetRequiredState().size());
+
+					//Set the total score of the node
+					pAdded->SetFScore(pAdded->GetGScore() + pAdded->GetHScore());
+
+					pTarget = pAdded;
+
+					//Add the node to the open list
+					openList.Add(pAdded);
+				}
 		}
 	}
-	else if(pAction) //if action is not null, then use that
-	{
-		std::vector<WorldState*> aRequiredWorldState = pAction->GetRequiredWorldState();
 
-		//If there is nothing required, then no need to do any of this
-		if (aRequiredWorldState.size() > 0)
+
+		bool bFoundPath = false; 
+	
+		if (openList.Size() == 0)
 		{
-			//If is it greater than zero, then this is necessary
-			//For every required world state
-			for (int i = 0; i < aRequiredWorldState.size(); i++)
+			if (pTarget != pGoal)
 			{
-				//Check if every action will satisfy it
+				bFoundPath = true;
+			}
+			else
+			{
+				std::cout << "cannot find valid path" << std::endl;
+				return false;
+			}
+			
+		}
+		
+
+
+	//While you haven't found the path
+	while (!bFoundPath && pTarget)
+	{
+
+		pTarget = openList.GetTop();
+
+		if (!pTarget)
+		{
+			return false;
+		}
+
+		
+	
+		//CHANGE THIS CODE IF IT DOES NOT WORK  if pTarget is in the closed list
+		if (std::find(aClosedList.begin(),aClosedList.end(),pTarget) != aClosedList.end())
+		{
+			continue;
+		}
+
+		ActionNode* pActionNode = (ActionNode*)pTarget;
+	
+		if (pActionNode)
+		{
+
+			//Gets the remaining requirements of node and its parents, removes requirements fulfilled by actions
+			std::vector<WorldState*> aReq = pActionNode->GetRequiredState();
+
+		
+
+			for (int i = 0; i < aReq.size(); i++)
+			{
+				//If it the world state is satisfied, then 
+				if (aReq[i]->IsSatisfied(m_pAgent))
+				{
+					//erase it from the requirements, as no need to do it
+					aReq.erase(aReq.begin() + i);
+					i--;
+
+					if (aReq.size() == 0)
+					{
+						break;
+					}
+				}
+
+
 				for (int j = 0; j < m_aAvailableActions.size(); j++)
 				{
-					if (aRequiredWorldState[i] == m_aAvailableActions[j]->GetSatisfiesWorldState())
+					if (m_aAvailableActions[j]->IsValid(m_pAgent))
 					{
-						//if it does add it to the tree
-						m_pTree->AddNode(m_aAvailableActions[j]);
+						
+						
+							if (aReq[i] == m_aAvailableActions[j]->GetSatisfiesWorldState())
+							{
+								m_pTree->AddNode(m_aAvailableActions[j], pTarget);
 
-						//then check the added node
-						GetActions(m_pTree->GetLastAdded());
+								ActionNode* pAdded = (ActionNode*)m_pTree->GetLastAdded();
 
-					
+								//Set the G score, the cost of going to this node (nothing since it is the goal node)
+								pAdded->SetGScore(pAdded->GetCost(m_pAgent));
+
+								//calculate the heuristic, or guess
+								pAdded->SetHScore((float)((ActionNode*)(m_pTree->GetLastAdded()))->GetRequiredState().size());
+
+								//Set the total score of the node
+								pAdded->SetFScore(pAdded->GetGScore() + pAdded->GetHScore());
+
+								openList.Add(m_pTree->GetLastAdded());
+							}
 					}
 				}
 			}
+			
+
+			//if the size is zero, that means there are no more remaining requirements and the path has been found
+			if (aReq.size() == 0)
+			{
+				//Found Path
+				bFoundPath = true;
+				break;
+			}
+
 		}
-		return;
+
+		
+
 	}
+
+
+	Node* pPathTarget = pTarget;
+
+	std::vector<GoapAction*> aActions;
+	//Set Current actions
+	if (bFoundPath)
+	{
+		//While the target is not the goal node, and while the target is not nullptr
+		while ((pPathTarget != pGoal) && pPathTarget)
+		{
+			//and it to the array
+			aActions.push_back(((ActionNode*)pPathTarget)->GetAction());
+
+			//Set the new target to the targets parent
+			pPathTarget = pPathTarget->GetParent();
+		}
+
+		m_pAgent->SetCurrentActions(aActions);
+		return true;
+
+	} 
+
+
+	//add pTarget to closed list
+	aClosedList.push_back(pTarget);
+	
+	
+
+	return false;
 }
+

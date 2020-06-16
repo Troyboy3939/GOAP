@@ -15,15 +15,15 @@ public:
 
 	void SetGoals(std::vector<GoapGoal*> aGoals);
 
-	void SetCurrentActions(std::queue<GoapAction*> aActions);
+	void SetCurrentActions(std::vector<GoapAction*> aActions);
 
 	void SetAvailableActions(std::vector<GoapAction*> aActions);
 
 	void Update();
 
-private:
+protected:
 	//Actions the agent should be doing
-	std::queue<GoapAction*> m_aCurrentActions;
+	std::vector<GoapAction*> m_aCurrentActions;
 
 	//Actions that the agent can do
 	std::vector<GoapAction*> m_aAvailableActions;
@@ -33,4 +33,3 @@ private:
 
 	GoapPlanner* m_pPlanner;
 };
-

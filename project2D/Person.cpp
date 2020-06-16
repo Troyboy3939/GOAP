@@ -1,11 +1,18 @@
 #include "Person.h"
 
-Person::Person(TYPE eType, Vector2 v2Position , Vector3 v3Colour) : GoapAgent()
+#include <iostream>
+
+
+Person::Person(TYPE eType , Vector3 v3Colour) : GoapAgent()
 {
-	m_v2Position = v2Position;
+
 	m_v3Colour = v3Colour;
 	m_eType = eType;
 	m_bWorking = false;
+	//Initial investment
+	m_fMoney = 500.0f;
+
+	
 }
 
 void Person::Update(float fDeltaTime)
@@ -41,4 +48,14 @@ void Person::SetVelocity(Vector2 v2Velocity)
 Person::TYPE Person::GetType()
 {
 	return m_eType;
+}
+
+float Person::GetMoney()
+{
+	return m_fMoney;
+}
+
+void Person::SetMoney(float fMoney)
+{
+	m_fMoney = fMoney;
 }
