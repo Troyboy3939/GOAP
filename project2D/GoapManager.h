@@ -26,7 +26,7 @@
 class GoapManager
 {
 public:
-	GoapManager(Mine* pMine, LoggingSite* pLogSite, SmithingSite* pSmithSite);
+	GoapManager(aie::Font* pFont, Mine* pMine, LoggingSite* pLogSite, SmithingSite* pSmithSite);
 	~GoapManager();
 
 	void Update(float fDeltaTime);

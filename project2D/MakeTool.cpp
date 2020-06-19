@@ -1,6 +1,6 @@
 #include "MakeTool.h"
 #include "Blacksmith.h"
-MakeTool::MakeTool(WorldState* pSatisfies, std::vector<WorldState*> aRequired) : GoapAction(pSatisfies,aRequired)
+MakeTool::MakeTool(WorldState* pSatisfies, std::vector<WorldState*> aRequired) : GoapAction("MakeTool",pSatisfies,aRequired)
 {
 
 }
@@ -12,7 +12,7 @@ bool MakeTool::IsValid(GoapAgent* pAgent)
 	if (pBlacksmith)
 	{
 		//valid action if the blacksmith has resources
-		return pBlacksmith->HasResources();
+		return pBlacksmith->StationExists();
 	}
 	return false;
 }

@@ -1,7 +1,7 @@
 #include "BuyLogs.h"
 #include "Blacksmith.h"
 
-BuyLogs::BuyLogs(LoggingSite* pSite, WorldState* pSatisfies, std::vector<WorldState*> pRequired) : GoapAction(pSatisfies, pRequired)
+BuyLogs::BuyLogs(LoggingSite* pSite, WorldState* pSatisfies, std::vector<WorldState*> pRequired) : GoapAction("BuyLogs",pSatisfies, pRequired)
 {
 	m_pLoggingSite = pSite;
 	m_fCost = m_pLoggingSite->GetLogPrice();
@@ -26,4 +26,14 @@ float BuyLogs::GetCost(GoapAgent* pAgent)
 
 
 	return m_fCost;
+}
+
+Vector2 BuyLogs::GetSitePosition()
+{
+	return m_pLoggingSite->GetPosition();
+}
+
+LoggingSite* BuyLogs::GetSite()
+{
+	return m_pLoggingSite;
 }

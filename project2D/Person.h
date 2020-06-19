@@ -4,6 +4,8 @@
 #include "Renderer2D.h"
 #include "Vector3.h"
 #include <vector>
+
+class Tool;
 //Base class for each type of person, inherits from goap Agent
 class Person : public GoapAgent
 {
@@ -34,6 +36,8 @@ public:
     virtual bool AtStation() = 0;
     virtual bool StationExists() = 0;
 
+    virtual void SetTool(Tool* pTool) = 0;
+
     float GetMoney();
     void SetMoney(float fMoney);
 protected:
@@ -44,5 +48,6 @@ protected:
     TYPE m_eType;
     bool m_bWorking;
     float m_fMoney;
+    float m_fMaxSpeed;
 };
 

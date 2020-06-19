@@ -10,6 +10,11 @@ public:
 	bool IsValid(GoapAgent* pAgent);
 
 	float GetCost(GoapAgent* pAgent);
+
+
+	Vector2 GetSitePosition();
+
+	Mine* GetSite();
 private:
 	Mine* m_pMine;
 };

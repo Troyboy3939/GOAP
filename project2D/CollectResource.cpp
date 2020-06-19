@@ -1,6 +1,6 @@
 #include "CollectResource.h"
 #include "Person.h"
-CollectResource::CollectResource(WorldState* pSatisifies, std::vector<WorldState*> aRequires) : GoapAction(pSatisifies,aRequires)
+CollectResource::CollectResource(WorldState* pSatisifies, std::vector<WorldState*> aRequires) : GoapAction("CollectResource",pSatisifies,aRequires)
 {
 }
 

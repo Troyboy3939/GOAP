@@ -9,6 +9,7 @@ class GoapAgent
 {
 public:
 	GoapAgent();
+	~GoapAgent();
 
 	std::vector<GoapAction*> GetAvailableActions();
 	std::vector<GoapGoal*> GetGoals();

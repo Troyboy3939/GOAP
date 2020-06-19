@@ -6,7 +6,7 @@
 class GoapAction
 {
 public:
-	GoapAction(WorldState* pSatisfies, std::vector<WorldState*> aRequired);
+	GoapAction(std::string strName,WorldState* pSatisfies, std::vector<WorldState*> aRequired);
 
 	//This function is what is called to check if this action is a valid action, check whether it is possible to do
 	//For example, to kill player, the agent needs to be able to see the player
@@ -17,6 +17,10 @@ public:
 
 	WorldState* GetSatisfiesWorldState();
 	std::vector<WorldState*> GetRequiredWorldState();
+
+
+	std::string GetName();
+	void SetName(std::string strName);
 protected:
 	//What is the cost of this action?
 	float m_fCost;
@@ -26,6 +30,9 @@ protected:
 
 	//what world state/s will mean that this action can be undertaken
 	std::vector<WorldState*> m_aRequiredWorldState;
+
+	std::string m_strName;
+
 };
 
 

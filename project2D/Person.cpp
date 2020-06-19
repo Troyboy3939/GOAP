@@ -11,6 +11,7 @@ Person::Person(TYPE eType , Vector3 v3Colour) : GoapAgent()
 	m_bWorking = false;
 	//Initial investment
 	m_fMoney = 500.0f;
+	m_fMaxSpeed = 100.0f;
 
 	
 }

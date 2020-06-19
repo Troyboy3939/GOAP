@@ -10,18 +10,21 @@ class GoapPlanner
 {
 public:
 	GoapPlanner(GoapAgent* pAgent);
+	~GoapPlanner();
 	void Update();
 
 	GoapAgent* GetAgent();
+
+
+	bool GetPlan();
+	void CheckGoals();
 private:
 
-	void CheckGoals();
 	GoapAgent* m_pAgent;
 	GoapGoal* m_pCurrentGoal;
 	std::vector<GoapAction*> m_aAvailableActions;
 	Tree* m_pTree;
 	bool m_bHasPlan;
 
-	bool GetPlan();
 };
 

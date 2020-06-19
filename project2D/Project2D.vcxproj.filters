@@ -33,9 +33,6 @@
     <ClCompile Include="Miner.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="OakTree.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Mine.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

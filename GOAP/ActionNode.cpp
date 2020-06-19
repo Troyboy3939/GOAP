@@ -57,13 +57,15 @@ std::vector<WorldState*> ActionNode::GetRequiredState()
 				}
 			}
 
+			
+			std::move(pParent.begin(),pParent.end(),std::back_inserter(aReturn));
 		}
 		
 
 	}
 
 
-
+	
 	return aReturn;
 }
 

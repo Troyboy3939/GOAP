@@ -1,6 +1,6 @@
 #include "GoapManager.h"
 
-GoapManager::GoapManager(Mine* pMine, LoggingSite* pLogSite, SmithingSite* pSmithSite)
+GoapManager::GoapManager(aie::Font* pFont, Mine* pMine, LoggingSite* pLogSite, SmithingSite* pSmithSite)
 {
 
 	
@@ -8,9 +8,9 @@ GoapManager::GoapManager(Mine* pMine, LoggingSite* pLogSite, SmithingSite* pSmit
 
 
 	//initialise people
-	m_pMiner = new Miner(pMine);
-	m_pBlacksmith = new Blacksmith(pSmithSite);
-	m_pWoodcutter = new Woodcutter(pLogSite);
+	m_pMiner = new Miner(pFont,pMine);
+	m_pBlacksmith = new Blacksmith(pFont, pSmithSite);
+	m_pWoodcutter = new Woodcutter(pFont, pLogSite);
 
 	//initialise action lists
 	std::vector<GoapAction*> aMinerActions;
@@ -54,15 +54,13 @@ GoapManager::GoapManager(Mine* pMine, LoggingSite* pLogSite, SmithingSite* pSmit
 	std::vector<WorldState*> aMakeTool;
 	//need to be at the blacksmith
 	aMakeTool.push_back(m_pAtBlacksmith);
+	aMakeTool.push_back(m_pGotLogs);
+	aMakeTool.push_back(m_pGotOre);
 
 
 
 
-	std::vector<WorldState*> aBuyLogs;
-	aBuyLogs.push_back(m_pNoLogs);
 
-	std::vector<WorldState*> aBuyOre;
-	aBuyOre.push_back(m_pNoOre);
 	//------------------------------------------------------------------------------
 
 
@@ -73,8 +71,8 @@ GoapManager::GoapManager(Mine* pMine, LoggingSite* pLogSite, SmithingSite* pSmit
 	m_pGotoBlacksmith = new GotoBlacksmith(pSmithSite,m_pAtBlacksmith, aNothing);
 	m_pMakeTool = new MakeTool(m_pWorking,aMakeTool);
 	m_pCollectResource = new CollectResource(m_pWorking,aNothing);
-	m_pBuyLogs = new BuyLogs(pLogSite,m_pGotLogs,aBuyLogs);
-	m_pBuyOre = new BuyOre(pMine,m_pGotOre, aBuyOre);
+	m_pBuyLogs = new BuyLogs(pLogSite,m_pGotLogs,aNothing);
+	m_pBuyOre = new BuyOre(pMine,m_pGotOre, aNothing);
 	//------------------------------------------------------------------------------
 
 							//ADD ACTIONS AND GOALS TO PEOPLE
@@ -114,6 +112,25 @@ GoapManager::~GoapManager()
 	delete m_pMiner;
 	delete m_pBlacksmith;
 	delete m_pWoodcutter;
+
+	delete m_pAtBlacksmith;
+	delete m_pNoTool;
+	delete m_pGotLogs;
+	delete m_pGotOre;
+	delete m_pGotTool;
+	delete m_pNoLogs;
+	delete m_pNoOre;
+	delete m_pWorking;
+
+	delete m_pMakeTool;
+	delete m_pCollectResource;
+	delete m_pBuyLogs;
+	delete m_pBuyOre;
+	delete m_pGotoBlacksmith;
+
+
+	delete m_pWorkGoal;
+	delete m_pBuyToolGoal;
 }
 
 //Nothing, only person

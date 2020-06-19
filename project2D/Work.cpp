@@ -37,7 +37,7 @@ bool Work::IsValid(GoapAgent* pAgent)
 	}
 	else if (pBlacksmith)
 	{
-		return pBlacksmith->StationExists() && pBlacksmith->HasResources();
+		return pBlacksmith->StationExists();
 		
 	}
 

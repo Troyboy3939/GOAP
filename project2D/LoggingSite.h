@@ -3,7 +3,7 @@
 #include "Vector2.h"
 
 class Person;
-
+class Woodcutter;
 class LoggingSite
 {
 public:
@@ -17,9 +17,13 @@ public:
 	void SetPosition(Vector2 v2Position);
 
 	//returns true if bought log
-	bool BuyLog(Person* pCustomer);
+	bool BuyLog(Person* pCustomer, int nAmount);
 
 	float GetLogPrice();
+
+	float GetMoney();
+	int LogCount();
+	void CollectMoney(Woodcutter* pWoodcutter);
 private:
 
 	friend class Woodcutter;
@@ -29,5 +33,6 @@ private:
 	int m_nLogs;
 	float m_fLogPrice;
 	float m_fMoneyCollected;
+	float m_fTimer;
 };
 

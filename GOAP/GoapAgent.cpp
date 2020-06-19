@@ -7,6 +7,11 @@ GoapAgent::GoapAgent()
 	m_pPlanner = new GoapPlanner(this);
 }
 
+GoapAgent::~GoapAgent()
+{
+	delete m_pPlanner;
+}
+
 std::vector<GoapAction*> GoapAgent::GetAvailableActions()
 {
 	return m_aAvailableActions;

@@ -190,7 +190,6 @@
     <ClCompile Include="Maths\Vector3.cpp" />
     <ClCompile Include="Mine.cpp" />
     <ClCompile Include="Miner.cpp" />
-    <ClCompile Include="OakTree.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="SmithingSite.cpp" />
     <ClCompile Include="Tool.cpp" />

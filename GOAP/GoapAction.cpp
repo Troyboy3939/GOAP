@@ -1,10 +1,10 @@
 #include "GoapAction.h"
 
-GoapAction::GoapAction(WorldState* pSatisfies, std::vector<WorldState*> aRequired)
+GoapAction::GoapAction(std::string strName, WorldState* pSatisfies, std::vector<WorldState*> aRequired)
 {
 	m_aRequiredWorldState = aRequired;
 	m_pSatisfiesWorldState = pSatisfies;
-	
+	m_strName = strName;
 }
 
 
@@ -22,4 +22,14 @@ WorldState* GoapAction::GetSatisfiesWorldState()
 std::vector<WorldState*> GoapAction::GetRequiredWorldState()
 {
 	return m_aRequiredWorldState;
+}
+
+std::string GoapAction::GetName()
+{
+	return m_strName;
+}
+
+void GoapAction::SetName(std::string strName)
+{
+	m_strName = strName;
 }

@@ -9,6 +9,10 @@ public:
 
 	bool IsValid(GoapAgent* pAgent);
 	float GetCost(GoapAgent* pAgent);
+
+	Vector2 GetSitePosition();
+
+	LoggingSite* GetSite();
 private:
 	LoggingSite* m_pLoggingSite;
 };

@@ -16,6 +16,16 @@ GoapPlanner::GoapPlanner(GoapAgent* pAgent)
 	CheckGoals();
 }
 
+GoapPlanner::~GoapPlanner()
+{
+	if (m_pTree)
+	{
+		delete m_pTree;
+	}
+
+
+}
+
 void GoapPlanner::Update()
 {
 
@@ -75,6 +85,7 @@ void GoapPlanner::CheckGoals()
 						if (!m_pCurrentGoal->IsValid(m_pAgent) || m_pCurrentGoal->GetPriority() < aGoals[i]->GetPriority())
 						{
 							m_pTree->AddNewGoal(aGoals[i]);
+							m_pCurrentGoal = aGoals[i];
 							m_bHasPlan = false;
 							return;
 						}
@@ -204,9 +215,6 @@ bool GoapPlanner::GetPlan()
 
 			//Gets the remaining requirements of node and its parents, removes requirements fulfilled by actions
 			std::vector<WorldState*> aReq = pActionNode->GetRequiredState();
-
-		
-
 			for (int i = 0; i < aReq.size(); i++)
 			{
 				//If it the world state is satisfied, then 
@@ -221,6 +229,12 @@ bool GoapPlanner::GetPlan()
 						break;
 					}
 				}
+			}
+		
+
+			for (int i = 0; i < aReq.size(); i++)
+			{
+				
 
 
 				for (int j = 0; j < m_aAvailableActions.size(); j++)

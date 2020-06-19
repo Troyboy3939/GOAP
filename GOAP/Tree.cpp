@@ -18,14 +18,19 @@ Tree::Tree(GoapGoal* pGoal)
 
 Tree::~Tree()
 {
+	//Clear the tree, adding all to m_aDeleted
+	DeleteBranch(m_pRootNode);
+
+	//Delete them all
 	for (int i = 0; i < m_aDeleted.size(); i++)
 	{
 		delete m_aDeleted.front();
 		m_aDeleted.front() = nullptr;
 		m_aDeleted.pop_front();
 	}
-		
+	//clear the tree for good measure
 	m_aDeleted.clear();
+
 }
 
 void Tree::AddNode(GoapAction* pAction, Node* pParent)
